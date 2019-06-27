@@ -1,0 +1,77 @@
+Source Code Final Project
+<canvas id="canvas" width="400" height="300"></canvas>
+<div>
+    <button class="save">Save</button>
+    <button class="clear">Clear</button> <span>Color
+<input type="color" value="#ffff00" id="penColor"></span> <span>Width
+<input type="range" min="1" max="20" value="10" id="penWidth"></span> </div>
+<script>
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.style.border = '1px solid black';
+    const penColor = document.querySelector('#penColor');
+    const penWidth = document.querySelector('#penWidth');
+    document.querySelector('.save').addEventListener('click', saveImg);
+    document.querySelector('.clear').addEventListener('click', clearImg);
+    const m = {
+        draw: false
+        , x: 0
+        , y: 0
+        , lastX: 0
+        , lastY: 0
+    };
+    canvas.addEventListener('mousemove', function (e) {
+        m.lastX = m.x;
+        m.lastY = m.y;
+        m.x = e.x - canvas.offsetLeft;
+        m.y = e.y - canvas.offsetTop;
+        //console.log(m.x,m.y);
+        draw('move');
+    })
+    canvas.addEventListener('mousedown', function (e) {
+        draw('down');
+    })
+    canvas.addEventListener('mouseup', function (e) {
+        draw('up');
+    })
+    canvas.addEventListener('mouseout', function (e) {
+        draw('up');
+    })
+ 
+    function draw(val) {
+        if (val === 'up') {
+            m.draw = false;
+        }
+        if (val === 'down') {
+            m.draw = true;
+        }
+        if (m.draw) {
+            console.log('drawing');
+            ctx.beginPath();
+            ctx.moveTo(m.lastX, m.lastY);
+            ctx.lineTo(m.x, m.y);
+            ctx.strokeStyle = penColor.value;
+            ctx.lineWidth = penWidth.value;
+            ctx.stroke();
+            ctx.closePath();
+        }
+    }
+ 
+    function saveImg() {
+        const dataURL = canvas.toDataURL();
+        console.log(dataURL);
+        const link = document.createElement('a');
+        document.body.appendChild(link);
+        link.setAttribute('download', 'image.png');
+        link.href = dataURL;
+        link.click();
+        document.body.removeChild(link);
+    }
+ 
+    function clearImg() {
+        let temp = confirm('Clear confirm?');
+        if (temp) {
+            ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+        }
+    }
+</script>

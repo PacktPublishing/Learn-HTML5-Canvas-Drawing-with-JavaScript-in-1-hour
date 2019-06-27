@@ -1,0 +1,20 @@
+Source Code
+<canvas id="canvas"></canvas>
+<script>
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'blue';
+    ctx.fillRect(10, 50, 50, 10);
+    ctx.strokeRect(100, 50, 100, 50);
+    ctx.clearRect(70, 70, 150, 150);
+    ctx.beginPath();
+    ctx.fillStyle = 'green';
+    ctx.moveTo(70, 70);
+    ctx.lineTo(100, 100);
+    ctx.lineTo(10, 50);
+    //ctx.lineTo(70,70);
+    //ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+</script>

@@ -1,0 +1,10 @@
+Canvas Text Source Code
+<canvas id="canvas"></canvas>
+<script>
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    let str = "Hello World";
+    ctx.font = '24px fantasy';
+    ctx.fillText(str, 20, 20);
+    ctx.strokeText(str, 20, 60);
+</script>

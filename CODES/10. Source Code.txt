@@ -1,0 +1,18 @@
+Source Code Arc Happy Face
+<canvas id="canvas"></canvas>
+<script>
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.fillStyle = 'yellow';
+    ctx.arc(70, 60, 50, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = 'black';
+    ctx.arc(50, 40, 10, 0, Math.PI * 2);
+    ctx.moveTo(90, 40);
+    ctx.arc(90, 40, 10, 0, Math.PI * 2);
+    ctx.moveTo(35, 60);
+    ctx.arc(70, 60, 35, 0, Math.PI);
+    ctx.fill();
+</script>

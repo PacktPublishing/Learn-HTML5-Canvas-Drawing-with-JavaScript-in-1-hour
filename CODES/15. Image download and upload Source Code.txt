@@ -1,0 +1,25 @@
+Image download and upload Source Code
+<canvas id="canvas"></canvas> <img src="">
+<button>Load Image</button>
+<script>
+    const btn = document.querySelector('button');
+    const imageOutput = document.querySelector('img');
+    btn.addEventListener('click', function () {
+        let temp = canvas.toDataURL();
+        imageOutput.src = temp;
+        const link = document.createElement('a');
+        document.body.appendChild(link);
+        link.setAttribute('download', 'whateverName.png');
+        link.href = temp;
+        link.click();
+        console.log(temp);
+    })
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    img.onload = function () {
+        console.log('image ready');
+        ctx.drawImage(img, 20, 20, 150, 120);
+    }
+    img.src = 'jslogo.png';
+</script>

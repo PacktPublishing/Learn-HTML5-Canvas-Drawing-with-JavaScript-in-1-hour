@@ -1,0 +1,22 @@
+Source Code
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>JavaScript</title>
+</head>
+ 
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        canvas.style.border = '1px solid black';
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'red';
+        ctx.fillRect(10, 10, 100, 200);
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(0, 0, 50, 50);
+    </script>
+</body>
+ 
+</html>
